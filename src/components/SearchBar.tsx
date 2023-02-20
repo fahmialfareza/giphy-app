@@ -40,10 +40,8 @@ function SearchBar() {
   }, [searchParams]);
 
   useEffect(() => {
-    if (search) {
-      setSearchParams({ search });
-      dispatch(searchGiphy(search));
-    }
+    setSearchParams({ search });
+    dispatch(searchGiphy(search));
   }, [search, setSearchParams, dispatch]);
 
   useEffect(() => {
