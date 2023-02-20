@@ -52,8 +52,9 @@ function SearchBar() {
 
   return (
     <>
-      <Form className="mx-auto " onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <Form.Control
+          autoFocus={true}
           type="search"
           placeholder="Search Your Giphy"
           className="me-2"
