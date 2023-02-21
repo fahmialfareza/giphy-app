@@ -11,6 +11,12 @@ interface GifListProps {
 }
 
 function GifList({ search, giphy, loading }: GifListProps) {
+  if (loading) {
+    <Col>
+      <h1 className="text-center">Loading...</h1>
+    </Col>;
+  }
+
   return (
     <Row className="my-4">
       {giphy.length > 0 ? (
@@ -20,17 +26,9 @@ function GifList({ search, giphy, loading }: GifListProps) {
           </Col>
         ))
       ) : (
-        <>
-          {loading ? (
-            <Col>
-              <h1 className="text-center">Loading...</h1>
-            </Col>
-          ) : (
-            <Col>
-              <h1 className="text-center">No result for "{search}"</h1>
-            </Col>
-          )}
-        </>
+        <Col>
+          <h1 className="text-center">No result for "{search}"</h1>
+        </Col>
       )}
     </Row>
   );
