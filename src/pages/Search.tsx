@@ -13,7 +13,7 @@ function Search() {
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useAppDispatch();
 
-  const { giphy } = useSelector(selectGiphy);
+  const { giphy, loading } = useSelector(selectGiphy);
 
   const [search, setSearch] = useState("");
 
@@ -68,7 +68,7 @@ function Search() {
         <Col md={2}></Col>
       </Row>
 
-      <GifList search={search} giphy={giphy} />
+      <GifList search={search} giphy={giphy} loading={loading} />
     </Container>
   );
 }

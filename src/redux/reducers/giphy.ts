@@ -5,6 +5,7 @@ import { GiphyState } from "../types";
 
 const initialState: GiphyState = {
   giphy: [],
+  loading: false,
 };
 
 const giphySlicer = createSlice({
@@ -14,10 +15,13 @@ const giphySlicer = createSlice({
     setGiphy: (state, action) => {
       state.giphy = action.payload;
     },
+    setLoading: (state, action) => {
+      state.loading = action.payload;
+    },
   },
 });
 
-export const { setGiphy } = giphySlicer.actions;
+export const { setGiphy, setLoading } = giphySlicer.actions;
 
 export const selectGiphy = (state: RootState) => state.giphy;
 

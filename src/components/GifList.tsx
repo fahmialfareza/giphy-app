@@ -7,9 +7,10 @@ import GifItem from "./GifItem";
 interface GifListProps {
   search: string;
   giphy: GiphyData[];
+  loading: boolean;
 }
 
-function GifList({ search, giphy }: GifListProps) {
+function GifList({ search, giphy, loading }: GifListProps) {
   return (
     <Row className="my-4">
       {giphy.length > 0 ? (
@@ -19,9 +20,17 @@ function GifList({ search, giphy }: GifListProps) {
           </Col>
         ))
       ) : (
-        <Col className="text-center">
-          <h1>No result for "{search}"</h1>
-        </Col>
+        <>
+          {loading ? (
+            <Col>
+              <h1 className="text-center">Loading...</h1>
+            </Col>
+          ) : (
+            <Col>
+              <h1 className="text-center">No result for "{search}"</h1>
+            </Col>
+          )}
+        </>
       )}
     </Row>
   );

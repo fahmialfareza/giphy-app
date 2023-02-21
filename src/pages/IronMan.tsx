@@ -10,7 +10,7 @@ import { selectGiphy } from "../redux/reducers/giphy";
 function IronMan() {
   const dispatch = useAppDispatch();
 
-  const { giphy } = useSelector(selectGiphy);
+  const { giphy, loading } = useSelector(selectGiphy);
 
   useEffect(() => {
     dispatch(searchGiphy("iron man"));
@@ -24,7 +24,7 @@ function IronMan() {
         </Col>
       </Row>
 
-      <GifList search="Iron Man" giphy={giphy} />
+      <GifList search="Iron Man" giphy={giphy} loading={loading} />
     </Container>
   );
 }
