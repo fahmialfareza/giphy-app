@@ -1,15 +1,15 @@
 import React from "react";
-import { useSearchParams } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
-import { useSelector } from "react-redux";
-import { selectGiphy } from "../redux/reducers/giphy";
+
+import { GiphyData } from "../models/giphy";
 import GifItem from "./GifItem";
 
-function GifList() {
-  const [searchParams] = useSearchParams();
+interface GifListProps {
+  search: string;
+  giphy: GiphyData[];
+}
 
-  const { giphy } = useSelector(selectGiphy);
-
+function GifList({ search, giphy }: GifListProps) {
   return (
     <Row className="my-4">
       {giphy.length > 0 ? (
@@ -20,7 +20,7 @@ function GifList() {
         ))
       ) : (
         <Col className="text-center">
-          <h1>No result for "{searchParams.get("search")}"</h1>
+          <h1>No result for "{search}"</h1>
         </Col>
       )}
     </Row>
